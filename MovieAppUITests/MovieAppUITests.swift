@@ -10,6 +10,27 @@ import XCTest
 
 class MovieAppUITests: XCTestCase {
 
+    func testFirstPage(){
+        
+        let app = XCUIApplication()
+        
+        let searchText = "avengers"
+        
+    let popularBtn = app/*@START_MENU_TOKEN@*/.buttons["Most Popular"]/*[[".segmentedControls.buttons[\"Most Popular\"]",".buttons[\"Most Popular\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(popularBtn.exists)
+        popularBtn.tap()
+        
+    let nowplayBtn = app/*@START_MENU_TOKEN@*/.buttons["Now Playing"]/*[[".segmentedControls.buttons[\"Now Playing\"]",".buttons[\"Now Playing\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(nowplayBtn.exists)
+        nowplayBtn.tap()
+        
+        let searchWithMovieNameSearchField = app.searchFields["Search with movie name"]
+        XCTAssertTrue(searchWithMovieNameSearchField.exists)
+        searchWithMovieNameSearchField.tap()
+        searchWithMovieNameSearchField.typeText(searchText)
+      
+
+    }
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 

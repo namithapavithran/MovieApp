@@ -10,6 +10,29 @@ import XCTest
 @testable import MovieApp
 
 class MovieAppTests: XCTestCase {
+    
+    func testLoadMore(){
+        let index = 9
+        let resultCount = 10
+        var pageNo = 1
+        let totalPages = 4
+       
+        let mockUrlWithPageNOA = "https://mockUrl.com/page=\(pageNo)"
+        let mockUrlWithPageNOB = "https://mockUrl.com/page=1"
+        XCTAssertEqual(mockUrlWithPageNOA, mockUrlWithPageNOB)
+        XCTAssertEqual(index, resultCount-1)
+        for _ in 0..<4{
+        if index == resultCount - 1{
+          
+            if pageNo < totalPages {
+                pageNo+=1
+               XCTAssertTrue(true, "More pages to load")
+            }
+            else{
+              XCTAssertFalse(false)
+            }
+            }}
+    }
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -17,6 +40,9 @@ class MovieAppTests: XCTestCase {
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    func testBasic() {
+        
     }
 
     func testExample() {
